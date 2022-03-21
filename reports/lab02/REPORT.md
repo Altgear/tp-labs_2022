@@ -8,11 +8,11 @@ $ open https://git-scm.com
 
 ## Tasks
 
-- [ ] 1. Создать публичный репозиторий с названием **lab02** и с лиценцией **MIT**
-- [ ] 2. Сгенирировать токен для доступа к сервису **GitHub** с правами **repo**
-- [ ] 3. Ознакомиться со ссылками учебного материала
-- [ ] 4. Выполнить инструкцию учебного материала
-- [ ] 5. Составить отчет и отправить ссылку личным сообщением в **Slack**
+- [x] 1. Создать публичный репозиторий с названием **lab02** и с лиценцией **MIT**
+- [x] 2. Сгенирировать токен для доступа к сервису **GitHub** с правами **repo**
+- [x] 3. Ознакомиться со ссылками учебного материала
+- [x] 4. Выполнить инструкцию учебного материала
+- [x] 5. Составить отчет и отправить ссылку личным сообщением в **Slack**
 
 ## Tutorial
 
@@ -155,42 +155,234 @@ $ gist REPORT.md
 
 1. Создайте пустой репозиторий на сервисе github.com (или gitlab.com, или bitbucket.com).
 2. Выполните инструкцию по созданию первого коммита на странице репозитория, созданного на предыдещем шаге.
+```bash
+$ echo "Lab02_hw" >> README.md
+```
 3. Создайте файл `hello_world.cpp` в локальной копии репозитория (который должен был появиться на шаге 2). Реализуйте программу **Hello world** на языке C++ используя плохой стиль кода. Например, после заголовочных файлов вставьте строку `using namespace std;`.
+```bash
+$ vim hello_world.cpp
+$ cat hello_world.cpp
+```
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	cout << "Hello world!" << endl;
+}
+```
 4. Добавьте этот файл в локальную копию репозитория.
+```bash
+$ git add hello_world.cpp
+```
 5. Закоммитьте изменения с *осмысленным* сообщением.
+```bash
+git commit -m "created Hello_world.cpp"
+```
 6. Изменитьте исходный код так, чтобы программа через стандартный поток ввода запрашивалось имя пользователя. А в стандартный поток вывода печаталось сообщение `Hello world from @name`, где `@name` имя пользователя.
+```bash
+$ vim hello_world.cpp
+$ cat hello_world.cpp
+```
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	string username;
+	cin >> username;
+	cout << "Hello world from " << username << "!" << endl;
+}
+```
 7. Закоммитьте новую версию программы. Почему не надо добавлять файл повторно `git add`?
+```bash
+$ git add hello_world.cpp // вообще-то надо
+$ git commit -m "changed Hello_world.cpp"
+```
 8. Запуште изменения в удалёный репозиторий.
+```bash
+$ git push origin lab02_hw1
+```
 9. Проверьте, что история коммитов доступна в удалёный репозитории.
+```
+commit 81df9c883ee9ed83c9199de8307e31ebe90415d2 (HEAD -> lab02_hw1, origin/lab02_hw1)
+```
 
 ### Part II
 
 **Note:** *Работать продолжайте с теми же репоззиториями, что и в первой части задания.*
 1. В локальной копии репозитория создайте локальную ветку `patch1`.
+```bash
+$ git checkout -b patch1
+```
 2. Внесите изменения в ветке `patch1` по исправлению кода и избавления от `using namespace std;`.
+```bash
+$ vim hello_world.cpp
+$ cat hello_world.cpp
+```
+```cpp
+#include <iostream>
+#include <string>
+
+int main() {
+	std::string username;
+	std::cin >> username;
+	std::cout << "Hello world from " << username << "!" << std::endl;
+}
+```
 3. **commit**, **push** локальную ветку в удалённый репозиторий.
+```bash
+$ git add hello_world.cpp
+$ git commit -m "remove using namespace std"
+$ git push origin patch1
+```
 4. Проверьте, что ветка `patch1` доступна в удалёный репозитории.
-5. Создайте pull-request `patch1 -> master`.
+```
+commit d0461483d8413e6fe9a623b9858a94dab4c89cde (HEAD -> patch1, origin/patch1)
+```
+5. Создайте pull-request `patch1 -> lab02_hw1`.
+
 6. В локальной копии в ветке `patch1` добавьте в исходный код комментарии.
+```bash
+$ vim hello_world.cpp
+$ cat hello_world.cpp
+```
+```cpp
+#include <iostream>
+#include <string>
+
+
+int main() {
+	std::string username; // храним имя пользователя
+	std::cin >> username; // вводим имя
+	std::cout << "Hello world from " << username << "!" << std::endl;
+}
+
+```
 7. **commit**, **push**.
+```bash
+$ git add hello_world.cpp
+$ git commit -m "remove using namespace std"
+$ git push origin patch1
+```
 8. Проверьте, что новые изменения есть в созданном на **шаге 5** pull-request
-9. В удалённый репозитории выполните  слияние PR `patch1 -> master` и удалите ветку `patch1` в удаленном репозитории.
+![](s_PR1.jpeg) 
+9. В удалённый репозитории выполните  слияние s_PR `patch1 -> master` и удалите ветку `patch1` в удаленном репозитории.
+![](s_PR2.jpeg) 
+
 10. Локально выполните **pull**.
-11. С помощью команды **git log** просмотрите историю в локальной версии ветки `master`.
+```bash
+$ git checkout lab02_hw1
+$ git pull origin lab02_hw1
+```
+11. С помощью команды **git log** просмотрите историю в локальной версии ветки `lab02_hw1`.
+```bash
+$ git log 
+commit 243d4b39b86f6b16911ece73714c6ffeb6b8a798 (HEAD -> lab02_hw1, origin/lab02_hw1)
+Merge: 81df9c8 8fa56db
+. . .
+    Merge pull request #1 from Altgear/patch1
+    
+    remove using namespace std
+```
 12. Удалите локальную ветку `patch1`.
+```bash
+$ git branch -d patch1
+```
 
 ### Part III
 
 **Note:** *Работать продолжайте с теми же репоззиториями, что и в первой части задания.*
 1. Создайте новую локальную ветку `patch2`.
+```bash
+$ git checkout -b patch2
+```
 2. Измените *code style* с помощью утилиты [**clang-format**](http://clang.llvm.org/docs/ClangFormat.html). Например, используя опцию `-style=Mozilla`.
-3. **commit**, **push**, создайте pull-request `patch2 -> master`.
+```bash
+$ clang-format hello_world.cpp -style=Mozilla -i
+$ cat hello_world.cpp
+```
+```cpp
+#include <iostream>
+#include <string>
+
+int
+main()
+{
+  std::string username; // храним имя пользователя
+  std::cin >> username; // вводим имя
+  std::cout << "Hello world from " << username << "!" << std::endl;
+}
+```
+3. **commit**, **push**, создайте pull-request `patch2 -> lab02_hw1`.
+```bash
+$ git add hello_world.cpp
+$ git commit -m "formated with clang"
+$ git push origin patch2
+```
+![](s_PR3.jpeg) 
 4. В ветке **master** в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
 5. Убедитесь, что в pull-request появились *конфликтны*.
+![](s_PR4.jpeg)
 6. Для этого локально выполните **pull** + **rebase** (точную последовательность команд, следует узнать самостоятельно). **Исправьте конфликты**.
+```bash
+$ git checkout lab02_hw1
+$ git pull origin lab02_hw1
+$ git rebase lab02_hw1 patch2
+$ cat hello_world.cpp
+```
+
+```cpp
+#include <iostream>
+#include <string>
+
+<<<<<<< HEAD
+
+int main() {
+        std::string username; // string to save userame
+        std::cin >> username; // entering username
+        std::cout << "Hello world from " << username << "!" << std::endl;
+=======
+int
+main()
+{
+  std::string username; // храним имя пользователя
+  std::cin >> username; // вводим имя
+  std::cout << "Hello world from " << username << "!" << std::endl;
+>>>>>>> formated with clang
+}
+
+```
+
+```bash
+$ vim hello_world.cpp
+$ git add hello_world.cpp
+$ git rebase --continue
+Applying: formated with clang
+$ cat hello_world.cpp
+```
+
+```cpp
+#include <iostream>
+#include <string>
+
+int main() {
+	std::string username; // string to save userame
+	std::cin >> username; // entering username
+	std::cout << "Hello world from " << username << "!" << std::endl;
+}
+```
 7. Сделайте *force push* в ветку `patch2`
+```bash 
+$ git push -f origin patch2
+```
 8. Убедитель, что в pull-request пропали конфликтны. 
-9. Вмержите pull-request `patch2 -> master`.
+![](s_PR5.jpeg)
+9. Вмержите pull-request `patch2 -> lab02_hw1`.
+![](s_PR6.jpeg)
 
 ## Links
 
