@@ -3,7 +3,7 @@
 
 
 int main() {
-	std::string username; // храним имя пользователя
-	std::cin >> username; // вводим имя
+	std::string username; // string to save userame
+	std::cin >> username; // entering username
 	std::cout << "Hello world from " << username << "!" << std::endl;
 }
