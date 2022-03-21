@@ -17,19 +17,25 @@ $ open https://git-scm.com
 ## Tutorial
 
 ```sh
+#  вводим переменные в Терминал
 $ export GITHUB_USERNAME=<имя_пользователя>
 $ export GITHUB_EMAIL=<адрес_почтового_ящика>
 $ export GITHUB_TOKEN=<сгенирированный_токен>
+# делаем ссылку edit на свой тексовый редактор
 $ alias edit=<nano|vi|vim|subl>
 ```
 
 ```sh
 $ cd ${GITHUB_USERNAME}/workspace
+# активируем скрипты для добавлления npm в PATH
+## Только зачем, если все через gist?
 $ source scripts/activate
 ```
 
 ```sh
 $ mkdir ~/.config
+# записываем конфигурационный фаил hub
+## Но в этой лабе я его не использую 
 $ cat > ~/.config/hub <<EOF
 github.com:
 - user: ${GITHUB_USERNAME}
@@ -40,18 +46,26 @@ $ git config --global hub.protocol https
 ```
 
 ```sh
-$ mkdir projects/lab02 && cd projects/lab02
+$ mkdir -p projects/lab02 && cd projects/lab02
+# создаем локальный репозиторий
 $ git init
+# настраиваем локальный репозиторий
 $ git config --global user.name ${GITHUB_USERNAME}
 $ git config --global user.email ${GITHUB_EMAIL}
 # check your git global settings
 $ git config -e --global
+# указываем адресс удаленного репозитория
 $ git remote add origin https://github.com/${GITHUB_USERNAME}/lab02.git
+# подтяиваем файлы из удаленного репозитория
 $ git pull origin master
+# создаем фаил
 $ touch README.md
 $ git status
+# добавляем фаил в отслеживаемые
 $ git add README.md
-$ git commit -m"added README.md"
+# Фиксируем изменения
+$ git commit -m "added README.md"
+# отправляем коммиты на удаленный репозиторий
 $ git push origin master
 ```
 
@@ -132,7 +146,9 @@ $ edit README.md
 ```sh
 $ git status
 $ git add .
-$ git commit -m"added sources"
+# Делаем коммит
+$ git commit -m "added sources"
+# отправляем файлы на github
 $ git push origin master
 ```
 
