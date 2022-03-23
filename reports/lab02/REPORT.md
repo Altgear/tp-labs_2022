@@ -281,12 +281,12 @@ int main() {
 7. **commit**, **push**.
 ```bash
 $ git add hello_world.cpp
-$ git commit -m "remove using namespace std"
+$ git commit -m "added comments"
 $ git push origin patch1
 ```
 8. Проверьте, что новые изменения есть в созданном на **шаге 5** pull-request
 ![](s_PR1.jpeg) 
-9. В удалённый репозитории выполните  слияние s_PR `patch1 -> master` и удалите ветку `patch1` в удаленном репозитории.
+9. В удалённый репозитории выполните  слияние s_PR `patch1 -> lab02_hw1` и удалите ветку `patch1` в удаленном репозитории.
 ![](s_PR2.jpeg) 
 
 10. Локально выполните **pull**.
