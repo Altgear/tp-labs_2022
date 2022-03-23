@@ -35,7 +35,7 @@ $ source scripts/activate
 ```sh
 $ mkdir ~/.config
 # записываем конфигурационный фаил hub
-## Но в этой лабе я его не использую 
+## Но в этой лабе я его не использую
 $ cat > ~/.config/hub <<EOF
 github.com:
 - user: ${GITHUB_USERNAME}
@@ -285,9 +285,9 @@ $ git commit -m "added comments"
 $ git push origin patch1
 ```
 8. Проверьте, что новые изменения есть в созданном на **шаге 5** pull-request
-![](s_PR1.jpeg) 
+![](s_PR1.jpeg)
 9. В удалённый репозитории выполните  слияние s_PR `patch1 -> lab02_hw1` и удалите ветку `patch1` в удаленном репозитории.
-![](s_PR2.jpeg) 
+![](s_PR2.jpeg)
 
 10. Локально выполните **pull**.
 ```bash
@@ -296,12 +296,12 @@ $ git pull origin lab02_hw1
 ```
 11. С помощью команды **git log** просмотрите историю в локальной версии ветки `lab02_hw1`.
 ```bash
-$ git log 
+$ git log
 commit 243d4b39b86f6b16911ece73714c6ffeb6b8a798 (HEAD -> lab02_hw1, origin/lab02_hw1)
 Merge: 81df9c8 8fa56db
 . . .
     Merge pull request #1 from Altgear/patch1
-    
+
     remove using namespace std
 ```
 12. Удалите локальную ветку `patch1`.
@@ -339,7 +339,7 @@ $ git add hello_world.cpp
 $ git commit -m "formated with clang"
 $ git push origin patch2
 ```
-![](s_PR3.jpeg) 
+![](s_PR3.jpeg)
 4. В ветке **master** в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
 5. Убедитесь, что в pull-request появились *конфликтны*.
 ![](s_PR4.jpeg)
@@ -392,10 +392,10 @@ int main() {
 }
 ```
 7. Сделайте *force push* в ветку `patch2`
-```bash 
+```bash
 $ git push -f origin patch2
 ```
-8. Убедитель, что в pull-request пропали конфликтны. 
+8. Убедитель, что в pull-request пропали конфликтны.
 ![](s_PR5.jpeg)
 9. Вмержите pull-request `patch2 -> lab02_hw1`.
 ![](s_PR6.jpeg)
