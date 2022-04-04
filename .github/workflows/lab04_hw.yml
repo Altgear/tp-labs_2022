@@ -5,11 +5,11 @@ on:
     branches: lab04_hw
 
 env:
-  SHORT_PATH: ${{github.workspace}}/homework/lab04
-  PATH_F: ${{env.SHORT_PATH}}/formatter_lib
-  PATH_FX: ${{env.SHORT_PATH}}/formatter_ex_lib
-  PATH_H: ${{env.SHORT_PATH}}/hello_world_application
-  PATH_S: ${{env.SHORT_PATH}}/solver_application
+  - SHORT_PATH: ${{github.workspace}}/homework/lab04
+  - PATH_F: ${{env.SHORT_PATH}}/formatter_lib
+  - PATH_FX: ${{env.SHORT_PATH}}/formatter_ex_lib
+  - PATH_H: ${{env.SHORT_PATH}}/hello_world_application
+  - PATH_S: ${{env.SHORT_PATH}}/solver_application
 
 jobs:
   build:
@@ -20,8 +20,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      env:
-        PATH_F: ${{env.SHORT_PATH}}/formatter_lib
     - name: Build formatter
       run: cmake -H${{env.PATH_F}} -B${{env.PATH_F}}/_build
     - run: cmake --build ${{env.PATH_F}}/_build
