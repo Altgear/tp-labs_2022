@@ -4,14 +4,11 @@ on:
   push:
     branches: lab04_hw
 
-env:
-  SHORT_PATH: ${{github.workspace}}/homework/lab04
-
 jobs:
   formatter:
     runs-on: ubuntu-latest
     env:
-      PATH_F: ${{env.SHORT_PATH}}/formatter_lib
+      PATH_F: ${{github.workspace}}/homework/lab04/formatter_lib
     steps:
     - uses: actions/checkout@v3
     - name: Build formatter
@@ -20,7 +17,7 @@ jobs:
   formatter_ex:
     runs-on: ubuntu-latest
     env:
-      PATH_FX: ${{env.SHORT_PATH}}/formatter_ex_lib
+      PATH_FX: ${{github.workspace}}/homework/lab04/formatter_ex_lib
     steps:
     - name: Build formatter_ex
       run: cmake -H${{env.PATH_FX}} -B${{env.PATH_FX}}/_build
@@ -28,7 +25,7 @@ jobs:
   hello_world:
     runs-on: ubuntu-latest
     env:
-      PATH_H: ${{env.SHORT_PATH}}/hello_world_application
+      PATH_H: ${{github.workspace}}/homework/lab04/hello_world_application
     steps:
     - name: Build hello_world_app
       run: cmake -H${{env.PATH_H}} -B${{env.PATH_H}}/_build
@@ -36,7 +33,7 @@ jobs:
   solver:
     runs-on: ubuntu-latest
     env:
-      PATH_S: ${{env.SHORT_PATH}}/solver_application
+      PATH_S: ${{github.workspace}}/homework/lab04/solver_application
     steps:
     - name: Build solver_app
       run: cmake -H${{env.PATH_S}} -B${{env.PATH_S}}/_build
