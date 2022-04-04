@@ -20,7 +20,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-
+      env:
+        PATH_F: ${{env.SHORT_PATH}}/formatter_lib
     - name: Build formatter
       run: cmake -H${{env.PATH_F}} -B${{env.PATH_F}}/_build
     - run: cmake --build ${{env.PATH_F}}/_build
