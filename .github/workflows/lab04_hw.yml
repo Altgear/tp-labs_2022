@@ -18,17 +18,17 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Build formatter
-      run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/_formatter_lib/build 
+      run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/_formatter_lib/build
       run: cmake --build ${{env.SHORT_PATH}}/formatter_lib/_build
 
     - name: Build formatter_ex
       run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/formatter_ex_lib/_build
       run: cmake --build ${{env.SHORT_PATH}}/formatter_ex_lib/_build
-    
+
     - name: Build hello_world_app
       run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/hello_world_application/_build
-      run: cmake --build ${{env.SHORT_PATH}}/hello_world_application/_build
-    
+      run: cmake --build ${{env.SHORT_PATH}}/hello_world_application/
+
     - name: Build solver_app
       run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/solver_application/_build
       run: cmake --build ${{env.SHORT_PATH}}/solver_application/_build
