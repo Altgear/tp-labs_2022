@@ -15,6 +15,7 @@ jobs:
       run: cmake -H${{env.PATH_F}} -B${{env.PATH_F}}/_build
     - run: cmake --build ${{env.PATH_F}}/_build
   formatter_ex:
+    needs: formatter
     runs-on: ubuntu-latest
     env:
       PATH_FX: ${{github.workspace}}/homework/lab04/formatter_ex_lib
@@ -23,6 +24,7 @@ jobs:
       run: cmake -H${{env.PATH_FX}} -B${{env.PATH_FX}}/_build
     - run: cmake --build ${{env.PATH_FX}}/_build
   hello_world:
+    needs: formatter_ex
     runs-on: ubuntu-latest
     env:
       PATH_H: ${{github.workspace}}/homework/lab04/hello_world_application
@@ -31,6 +33,7 @@ jobs:
       run: cmake -H${{env.PATH_H}} -B${{env.PATH_H}}/_build
     - run: cmake --build ${{env.PATH_H}}/
   solver:
+    needs: formatter_ex
     runs-on: ubuntu-latest
     env:
       PATH_S: ${{github.workspace}}/homework/lab04/solver_application
