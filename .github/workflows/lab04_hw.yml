@@ -20,23 +20,23 @@ jobs:
     - name: Build formatter
       env:
         PATH_F: ${{env.SHORT_PATH}}/formatter_lib
-      run: cmake -H${{PATH_F}} -B${{PATH_F}}/build
-    - run: cmake --build ${{PATH_F}}/_build
+      run: cmake -H${{env.PATH_F}} -B${{env.PATH_F}}/build
+    - run: cmake --build ${{env.PATH_F}}/_build
 
     - name: Build formatter_ex
       env:
         PATH_FX: ${{env.SHORT_PATH}}/formatter_ex_lib
-      run: cmake -H${{PATH_FX}} -B${{PATH_FX}}/_build
-    - run: cmake --build ${{PATH_FX}}/_build
+      run: cmake -H${{env.PATH_FX}} -B${{env.PATH_FX}}/_build
+    - run: cmake --build ${{env.PATH_FX}}/_build
 
     - name: Build hello_world_app
       env:
         PATH_H: ${{env.SHORT_PATH}}/hello_world_application
-      run: cmake -H${{PATH_H}} -B${{PATH_H}}/_build
-    - run: cmake --build ${{PATH_H}}/
+      run: cmake -H${{env.PATH_H}} -B${{env.PATH_H}}/_build
+    - run: cmake --build ${{env.PATH_H}}/
 
     - name: Build solver_app
       env:
         PATH_S: ${{env.SHORT_PATH}}/solver_application
-      run: cmake -H${{PATH_S}} -B${{PATH_S}}/_build
-    - run: cmake --build ${{PATH_S}}/_build
+      run: cmake -H${{env.PATH_S}} -B${{env.PATH_S}}/_build
+    - run: cmake --build ${{env.PATH_S}}/_build
