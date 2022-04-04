@@ -6,7 +6,7 @@ on:
 
 jobs:
   formatter:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest,windows-latest] 
     env:
       PATH_F: ${{github.workspace}}/homework/lab04/formatter_lib
     steps:
