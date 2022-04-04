@@ -6,6 +6,10 @@ on:
 
 env:
   SHORT_PATH: ${{github.workspace}}/homework/lab04
+  PATH_F: ${{env.SHORT_PATH}}/formatter_lib
+  PATH_FX: ${{env.SHORT_PATH}}/formatter_ex_lib
+  PATH_H: ${{env.SHORT_PATH}}/hello_world_application
+  PATH_S: ${{env.SHORT_PATH}}/solver_application
 
 jobs:
   build:
@@ -18,17 +22,17 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Build formatter
-      run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/formatter_lib/build
-    - run: cmake --build ${{env.SHORT_PATH}}/formatter_lib/_build
+      run: cmake -H${{PATH_F}} -B${{PATH_F}}/build
+    - run: cmake --build ${{PATH_F}}/_build
 
     - name: Build formatter_ex
-      run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/formatter_ex_lib/_build
-    - run: cmake --build ${{env.SHORT_PATH}}/formatter_ex_lib/_build
+      run: cmake -H${{PATH_FX}} -B${{PATH_FX}}/_build
+    - run: cmake --build ${{PATH_FX}}/_build
 
     - name: Build hello_world_app
-      run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/hello_world_application/_build
-    - run: cmake --build ${{env.SHORT_PATH}}/hello_world_application/
+      run: cmake -H${{PATH_H}} -B${{PATH_H}}/_build
+    - run: cmake --build ${{PATH_H}}/
 
     - name: Build solver_app
-      run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/solver_application/_build
-    - run: cmake --build ${{env.SHORT_PATH}}/solver_application/_build
+      run: cmake -H${{PATH_S}} -B${{PATH_S}}/_build
+    - run: cmake --build ${{PATH_S}}/_build
