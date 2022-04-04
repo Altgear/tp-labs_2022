@@ -20,7 +20,7 @@ jobs:
     - name: Build formatter
       env:
         PATH_F: ${{env.SHORT_PATH}}/formatter_lib
-      run: cmake -H${{env.PATH_F}} -B${{env.PATH_F}}/build
+      run: cmake -H${{env.PATH_F}} -B${{env.PATH_F}}/_build
     - run: cmake --build ${{env.PATH_F}}/_build
 
     - name: Build formatter_ex
