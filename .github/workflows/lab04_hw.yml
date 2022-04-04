@@ -5,34 +5,39 @@ on:
     branches: lab04_hw
 
 env:
-  - SHORT_PATH: ${{github.workspace}}/homework/lab04
-  - PATH_F: ${{env.SHORT_PATH}}/formatter_lib
-  - PATH_FX: ${{env.SHORT_PATH}}/formatter_ex_lib
-  - PATH_H: ${{env.SHORT_PATH}}/hello_world_application
-  - PATH_S: ${{env.SHORT_PATH}}/solver_application
+  SHORT_PATH: ${{github.workspace}}/homework/lab04
 
 jobs:
-  build:
-    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
-    # You can convert this to a matrix build if you need cross-platform coverage.
-    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+  formatter:
     runs-on: ubuntu-latest
-
+    env:
+      PATH_F: ${{env.SHORT_PATH}}/formatter_lib
     steps:
     - uses: actions/checkout@v3
     - name: Build formatter
       run: cmake -H${{env.PATH_F}} -B${{env.PATH_F}}/_build
     - run: cmake --build ${{env.PATH_F}}/_build
-
+  formatter_ex:
+    runs-on: ubuntu-latest
+    env:
+      PATH_FX: ${{env.SHORT_PATH}}/formatter_ex_lib
+    steps:
     - name: Build formatter_ex
       run: cmake -H${{env.PATH_FX}} -B${{env.PATH_FX}}/_build
     - run: cmake --build ${{env.PATH_FX}}/_build
-
+  hello_world:
+    runs-on: ubuntu-latest
+    env:
+      PATH_H: ${{env.SHORT_PATH}}/hello_world_application
+    steps:
     - name: Build hello_world_app
-      env:
       run: cmake -H${{env.PATH_H}} -B${{env.PATH_H}}/_build
     - run: cmake --build ${{env.PATH_H}}/
-
+  solver:
+    runs-on: ubuntu-latest
+    env:
+      PATH_S: ${{env.SHORT_PATH}}/solver_application
+    steps:
     - name: Build solver_app
       run: cmake -H${{env.PATH_S}} -B${{env.PATH_S}}/_build
     - run: cmake --build ${{env.PATH_S}}/_build
