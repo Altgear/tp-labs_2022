@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Build formatter
-      run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/_formatter_lib/build
+      run: cmake -S${{env.SHORT_PATH}} -B${{env.SHORT_PATH}}/formatter_lib/build
     - run: cmake --build ${{env.SHORT_PATH}}/formatter_lib/_build
 
     - name: Build formatter_ex
