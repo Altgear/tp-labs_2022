@@ -6,9 +6,13 @@ on:
 
 env:
   SHORT_PATH: ${{github.workspace}}/homework/lab04
+env:
   PATH_F: ${{env.SHORT_PATH}}/formatter_lib
+env:
   PATH_FX: ${{env.SHORT_PATH}}/formatter_ex_lib
+env:
   PATH_H: ${{env.SHORT_PATH}}/hello_world_application
+env:
   PATH_S: ${{env.SHORT_PATH}}/solver_application
 
 jobs:
